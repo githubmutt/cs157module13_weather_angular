@@ -1,0 +1,20 @@
+========================= INSTRUCTIONS =========================
+   Add routing to the weather app using AngularJS' ngRoute Module
+
+   a) Create the main index.html route handler which should have
+      all the AngularJS code, Routes, Controllers, Bootstrap and CSS.
+  
+   b) Create the HTML for the home view under /views/home.html. This
+      view will just have a single link to the weather app. The links
+      URL should be "#!/weather".
+   
+   c) Move the HTML for the weather app under the path /views/weather.html
+  
+   d) Set up a route called /weather/:zip? that will load the weather.html
+      view AND automatically display the weather data without having the enter
+      the ZIP code IF the zip code is passed into the URL. The ZIP code will
+      be obtained from the route URL using the $routeParams service.
+
+   (Reference - Module-13 - AngularJS - Templating Routing for SPAs)
+
+================================================================

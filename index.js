@@ -1,3 +1,5 @@
+/*
+
 const express = require('express');
 //const employeeDatabase = require("./employeeDatabase.js");
 
@@ -10,3 +12,4 @@ app.use(express.static('public'));
 
 
 app.listen(3000, () => console.log('port #3000: server started'));
+*/

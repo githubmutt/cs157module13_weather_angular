@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width" />
+  <title>Weather App</title>
+
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+  <link href="style.css" rel="stylesheet" type="text/css" />
+</head>
+
+<body ng-controller="mainController" ng-init="load()">
+
+  <div class="jumbotron">
+    <div class="container" style="height:5px">
+      <a href="#!/">Home</a> | <a href="#!/about">About</a> | <a href="#!/map">Map</a> | <a href="#!/test">Test</a>
+    </div>
+  </div>
+
+  </div>
+  <div class="jumbotron text-center py-4">
+    <h1>Module 13 Lab - Weather App Lab {{ 3 }} With Routing</h1>
+    <p>Weather App from Lab 3 converted to <strong>angular</strong>.
+    <p> Zip code validation for form of <br>
+      90223 ( 5 digits)<br>
+      90231-2123 (9 digits and dash) <br>
+      90029 is the default zip code ( LA City College location) <br>
+
+      There is no validation if zipcode maps to invalid US location (except weather call fails)<br>
+    <p> <strong>Get Weather </strong> button is disabled for invalid zip code <br>
+
+
+    <p> Angular $http module is used to make JSON calls to the weather service <br>
+      <a
+        href="https://api.openweathermap.org/data/2.5/weather?zip=90029&appid=000c53231273df2ac9323e70eee830d4&units=imperial">
+        https://api.openweathermap.org/data/2.5/weather?zip=90029&appid=000c53231273df2ac9323e70eee830d4&units=imperial
+      </a>
+    <p> Some Zip codes <br>
+      99701 Fairbanks Alaska ( coldest in US today) <br>
+      59701 Butte, Montana (cold) <br>
+      33040 Keywest, Florida (warmest in US today ) <br>
+      99301 Auburn, Washington (chance of rain) <br>
+    </p>
+  </div>
+
+  <div class="jumbotron">
+    <div ng-view></div>
+  </div>
+
+  <div class="jumbotron p1">
+    <small> Copyright 2022 CS157</small>
+  </div>
+
+
+
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.4.1.min.js"
+    integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+    integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+    crossorigin="anonymous"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+    integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+    crossorigin="anonymous"></script>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.8/angular.min.js"></script>
+
+  <!--  added for routes -->
+  <script src="https://code.angularjs.org/1.8.2/angular-route.min.js"> </script>
+  <!-- added for routes  -->
+
+  <!-- added for Google Maps -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkZlE_5gFrePXOqPfBlhIKzwaVcUJVIUo&callback=initMap&v=weekly" defer>
+  </script>
+  
+  <script>
+    var myApp = angular.module("myApp", ["ngRoute"]); // ngRoute need for routing (roger)
+
+    myApp.config(function ($routeProvider) {
+
+      $routeProvider
+        .when("/", {
+          templateUrl: "views/home.html",   // after the #!
+          controller: "homeController"
+        })       // Home view
+        .when("/about", {
+          templateUrl: "views/about.html",
+          controller: "aboutController"
+        })
+        .when("/weather", {
+          templateUrl: "views/weather.html",
+          controller: "weatherController"
+        })
+        .when("/weather/:zip?", {
+          templateUrl: "views/weather.html",
+          controller: "weatherController"
+        })
+        .when("/map", {
+          templateUrl: "views/map.html",
+          controller: "mapController"
+        })
+        .when("/test", {
+          templateUrl: "views/test.html",
+          controller: "testController"
+        })
+
+    }) // myApp.config
+
+
+    myApp.controller("mainController", function ($scope, $http) {
+
+
+    });
+
+  </script>
+
+  <script src="controllers/home.js"></script>
+  <script src="controllers/about.js"></script>
+  <script src="controllers/weather.js"></script>
+  <script src="controllers/map.js"></script>
+
+  <script src="controllers/test.js"></script>
+
+</body>
+
+</html>
